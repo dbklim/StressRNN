@@ -53,7 +53,7 @@ The package contains 2 classes: [StressRNN](https://github.com/Desklop/StressRNN
 
 ---
 
-## [StressRNN](https://github.com/Desklop/StressRNN/blob/master/stressrnn/stressrnn.py#L40) class
+### [StressRNN](https://github.com/Desklop/StressRNN/blob/master/stressrnn/stressrnn.py#L40) class
 
 The placement of stress in text using BiLSTM.
 
@@ -93,7 +93,7 @@ The threshold for the accuracy of stress placement allows you to cut off stresse
 
 ---
 
-## [ExceptionDictWrapper](https://github.com/Desklop/StressRNN/blob/master/stressrnn/exception_dictionary_wrapper.py#L24) class
+### [ExceptionDictWrapper](https://github.com/Desklop/StressRNN/blob/master/stressrnn/exception_dictionary_wrapper.py#L24) class
 
 Exception dictionary for correcting stress placement.
 
