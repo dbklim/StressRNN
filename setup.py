@@ -31,7 +31,7 @@ setup(name='stressrnn',
           'Programming Language :: Python :: 3.8',
           'Topic :: Text Processing :: Linguistic'
       ],
-      author='Maria Ponomareva (RusStress), Kirill Milintsevich (RusStress), Klim Vladislav (StressRNN)',
+      author='Maria Ponomareva (RusStress), Kirill Milintsevich (RusStress), Vladislav Klim (StressRNN)',
       keywords='nlp russian stress accent emphasis linguistic rnn lstm bilstm',
       author_email='ponomarevamawa@gmail.com (RusStress), vladsklim@gmail.com (StressRNN)',
       packages=['stressrnn'],

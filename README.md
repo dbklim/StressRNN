@@ -5,8 +5,6 @@ For more details about the tool see [«Automated Word Stress Detection in Russia
 
 This is a modified version of the [RusStress](https://github.com/MashaPo/russtress) (many thanks to its authors!). The modification fixes some bugs and improves the usability of the project. The neural network and the principles of working with it remained unchanged.
 
----
-
 ## Modification features
 
 The modification has the following differences from the original RusStress:
@@ -25,8 +23,6 @@ The modification has the following differences from the original RusStress:
 
 These changes allow you to use this package in projects such as speech synthesis, without any changes, "out of the box".
 
----
-
 ## Installation
 
 Simple installation with pip (python 3.6-3.8 supported):
@@ -38,8 +34,6 @@ pip3 install git+https://github.com/Desklop/StressRNN
 **Dependencies:** `numpy<1.19.0,>=1.16.0 scipy<=1.5.2 tensorflow<=1.15.4 pymorphy2[fast]<=0.9.2` (listed in [requirements.txt](https://github.com/Desklop/StressRNN/blob/master/requirements.txt)).
 
 **Note:** TensorFlow v2.X is supported, but the work speed using TensorFlow v2.X is about 3-5 times lower than with TensorFlow v1.X.
-
----
 
 ## Usage
 
@@ -57,7 +51,9 @@ print(stressed_text)  # 'Проста+вь, пожа+луйста, ударе+н
 
 The package contains 2 classes: [StressRNN](https://github.com/Desklop/StressRNN/blob/master/stressrnn/stressrnn.py#L40) and [ExceptionDictWrapper](https://github.com/Desklop/StressRNN/blob/master/stressrnn/exception_dictionary_wrapper.py#L24).
 
-### [StressRNN](https://github.com/Desklop/StressRNN/blob/master/stressrnn/stressrnn.py#L40) class
+---
+
+## [StressRNN](https://github.com/Desklop/StressRNN/blob/master/stressrnn/stressrnn.py#L40) class
 
 The placement of stress in text using BiLSTM.
 
@@ -95,7 +91,9 @@ The threshold for the accuracy of stress placement allows you to cut off stresse
 4. `replace_similar_latin_symbols` - `True`: replacing similar latin symbols with cyrillic ones
 5. returns text with placed stresses
 
-### [ExceptionDictWrapper](https://github.com/Desklop/StressRNN/blob/master/stressrnn/exception_dictionary_wrapper.py#L24) class
+---
+
+## [ExceptionDictWrapper](https://github.com/Desklop/StressRNN/blob/master/stressrnn/exception_dictionary_wrapper.py#L24) class
 
 Exception dictionary for correcting stress placement.
 
@@ -136,13 +134,9 @@ Put stress in a word in accordance with the dictionary. Stress is indicated by s
 2. `stress_symbol` - stress symbol
 3. returns word with placed stress
 
----
-
 ## Datasets
 
 The repo [contains](https://github.com/Desklop/StressRNN/datasets) samples from UD treebanks annotated with word stress for the Russian, Ukranian and Belorusian languages. For more details about the tool see VarDial paper (coming soon).
-
----
 
 ## Authors
 
