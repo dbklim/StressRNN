@@ -3,7 +3,7 @@
 This tool based on LSTM predicts stress position in each word in russian text depending on the word context.
 For more details about the tool see [«Automated Word Stress Detection in Russian»](http://www.aclweb.org/anthology/W/W17/W17-4104.pdf), EMNLP-2017, Copenhagen, Denmark.
 
-This is a modified version of the [RusStress](https://github.com/MashaPo/russtress) (many thanks to its authors!). The modification fixes some bugs and improves the usability of the project. The neural network and the principles of working with it remained unchanged.
+This is a modified version of the [RusStress](https://github.com/MashaPo/russtress) (many thanks to its authors!). The modification fixes some bugs, improves the quality of stress placement and the usability of the project. The neural network and the principles of working with it remained unchanged.
 
 ## Modification features
 
@@ -18,6 +18,7 @@ The modification has the following differences from the original RusStress:
 - fixed behavior with some words, in which the stress was placed on a consonant letter, not a vowel (the stress index is shifted by -1) (for example, "зряченюхослышащий")
 - added replacement of similar Latin symbols with the same Cyrillic ones (for example, `A` -> `А`, `e` -> `е`) (the full list is available in [SAME_LETTERS_EN_RU](https://github.com/Desklop/StressRNN/blob/master/stressrnn/constants.py#L27))
 - added an exception dictionary and the ability to load your own additional exception dictionary when creating a class object
+- added a [default exception dictionary](https://github.com/Desklop/StressRNN/blob/master/stressrnn/exception_dictionary.txt) based on the "Grammatical dictionary" by A. A. Zaliznyak from http://odict.ru/ (supplied with the package)
 - compiled all regular expressions to improve performance
 - code refactoring was performed
 
@@ -29,6 +30,21 @@ Simple installation with pip (python 3.6-3.8 supported):
 
 ```bash
 pip3 install git+https://github.com/Desklop/StressRNN
+```
+
+Or installing from sources:
+
+```bash
+git clone https://github.com/Desklop/StressRNN && cd StressRNN
+virtualenv env_base && source env_base/bin/activate
+pip install -r requirements.txt
+python3 setup.py bdist_wheel
+```
+
+Then copy .whl package from `/dist` to your project and run:
+
+```bash
+pip install stressrnn-0.1.4_*.whl
 ```
 
 **Dependencies:** `numpy<1.19.0,>=1.16.0 scipy<=1.5.2 tensorflow<=1.15.4 pymorphy2[fast]<=0.9.2` (listed in [requirements.txt](https://github.com/Desklop/StressRNN/blob/master/requirements.txt)).
@@ -133,6 +149,14 @@ Put stress in a word in accordance with the dictionary. Stress is indicated by s
 1. `word` - string with the word of interest
 2. `stress_symbol` - stress symbol
 3. returns word with placed stress
+
+## Updating the default exception dictionary
+
+The default exception dictionary is based on the "Grammar Dictionary" by A. A. Zaliznyak. To update it, you need to download the latest version from http://odict.ru/ (you need a dictionary without word forms) and run:
+
+```python
+python3 convert_zaliznyak_to_exception_dictionary.py -iz odict.zip -o stressrnn/exception_dictionary.txt
+```
 
 ## Datasets
 

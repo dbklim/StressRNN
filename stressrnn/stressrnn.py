@@ -34,7 +34,7 @@ except ImportError:
 # Disabling TensorFlow warning notifications (https://github.com/tensorflow/tensorflow/issues/27023#issuecomment-589673539)
 tf.compat.v1.logging.set_verbosity(tf.compat.v1.logging.ERROR)
 
-__version__ = '0.1.4_m1'
+__version__ = '0.1.4_m2'
 
 
 class StressRNN(object):
