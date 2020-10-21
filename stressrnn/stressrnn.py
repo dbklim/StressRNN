@@ -61,8 +61,12 @@ class StressRNN(object):
         with open(F_NAME_MODEL, 'r') as f_model:
             model_json = f_model.read()
 
-        self.model = tf.keras.models.model_from_json(model_json)
-        self.model.load_weights(str(F_NAME_WEIGHTS))
+        self.graph = tf.Graph()
+        with self.graph.as_default():
+            self.session = tf.Session(graph=self.graph)
+            with self.session.as_default():
+                self.model = tf.keras.models.model_from_json(model_json)
+                self.model.load_weights(str(F_NAME_WEIGHTS))
 
         self.exception_dict_wrapper = ExceptionDictWrapper(f_name_add_exception_dict)
 
@@ -79,7 +83,9 @@ class StressRNN(object):
             pos = MAX_INPUT_LEN - len(word_with_ending) + i
             x[0, pos, CHAR_INDICES[symbol]] = 1
 
-        predictions = self.model.predict(x, verbose=0)[0]
+        with self.graph.as_default():
+            with self.session.as_default():
+               predictions = self.model.predict(x, verbose=0)[0]
         predictions = predictions.tolist()
         accuracity = max(predictions)
         stress_index = predictions.index(accuracity)
