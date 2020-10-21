@@ -1,12 +1,10 @@
-# Compiled python modules.
 *.pyc
+*.egg-info
+__pycache__/
+.vscode/
+env_*/
 
-# Setuptools distribution folder.
-/dist/
+dist/
+build/
 
-# Python egg metadata, regenerated from source files by setuptools.
-/*.egg-info
-
-/__pycache__/
-
-/build/*
+odict*.zip

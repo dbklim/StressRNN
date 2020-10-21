@@ -1,4 +1,4 @@
-include README.rst
-include russtress/add_dictionary.sm
-include russtress/text_model.json
-include russtress/weights.96.hdf5
+include LICENSE README.md
+include stressrnn/exception_dictionary.txt
+include stressrnn/model.json
+include stressrnn/weights_96.hdf5
