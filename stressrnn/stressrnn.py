@@ -94,15 +94,14 @@ class StressRNN(object):
         stress_index = len(word) - MAX_INPUT_LEN + stress_index
 
         if stress_index > len(word) - 1:
-            print("[W] No {}-th letter in '{}'!".format(stress_index+1, word))
+            print("\n[W] No {}-th letter in '{}'!\n".format(stress_index+1, word))
             return word, 0.0
+
+        # With the word 'зряченюхослышащий' bug occurs: stress is placed on a consonant letter, not a vowel (the stress index is shifted by -1)
+        if word[stress_index] not in VOWELS and stress_index + 1 < len(word) - 1 and word[stress_index+1] in VOWELS:
+            stress_index += 1
         
         stressed_word = word[:stress_index+1] + stress_symbol + word[stress_index+1:]
-
-        # With the word 'зряченюхослышащий' bug occurs: the stress is placed not after, but before the vowel
-        if stressed_word.find(stress_symbol) + 1 < len(stressed_word) and stressed_word[stressed_word.find(stress_symbol)+1] in VOWELS:
-            stressed_word = word[:stress_index+2] + stress_symbol + word[stress_index+2:]
-
         return stressed_word, accuracity
 
 
