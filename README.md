@@ -155,7 +155,7 @@ Put stress in a word in accordance with the dictionary. Stress is indicated by s
 
 ## Updating the default exception dictionary
 
-The default exception dictionary is based on the "Grammar Dictionary" by A. A. Zaliznyak. To update it, you need to download the latest version from http://odict.ru/ (you need a dictionary without word forms) and run:
+The default exception dictionary is based on the "Grammatical Dictionary" by A. A. Zaliznyak. To update it, you need to download the latest version from http://odict.ru/ (you need a dictionary without word forms) and run:
 
 ```python
 python3 convert_zaliznyak_to_exception_dictionary.py -iz odict.zip -o stressrnn/exception_dictionary.txt
