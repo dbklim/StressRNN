@@ -17,11 +17,11 @@ except ImportError:
     from constants import *
 
 
-def tokenize(text: str, categories: list = DEFAULT_TOKENIZER_CATEGORIES, replace_similar_latin_symbols: bool = False) -> List[str]:
+def tokenize(text: str, categories: list = DEFAULT_TOKENIZER_CATEGORIES, replace_similar_symbols: bool = False) -> List[str]:
     ''' Splitting text into words according to categories. It also replaces similar latin symbols with cyrillic ones. '''
 
     # Latin symbols to cyrillic
-    if replace_similar_latin_symbols:
+    if replace_similar_symbols:
         for i, symbol in enumerate(text):
             if SAME_LETTERS_EN_RU.get(symbol):
                 text = text[:i] + SAME_LETTERS_EN_RU.get(symbol) + text[i+1:]
@@ -54,12 +54,12 @@ def tokenize(text: str, categories: list = DEFAULT_TOKENIZER_CATEGORIES, replace
     return tokens
 
 
-def prepare_text(text: str, replace_similar_latin_symbols: bool = False) -> List[str]:
+def prepare_text(text: str, replace_similar_symbols: bool = False) -> List[str]:
     ''' Text preparation: replacing similar latin symbols with cyrillic ones, marking to support endings (context),
     removing unsupported symbols and splitting into words by spaces. '''
 
     # Latin symbols to cyrillic
-    if replace_similar_latin_symbols:
+    if replace_similar_symbols:
         for i, symbol in enumerate(text):
             if SAME_LETTERS_EN_RU.get(symbol):
                 text = text[:i] + SAME_LETTERS_EN_RU.get(symbol) + text[i+1:]

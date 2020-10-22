@@ -71,26 +71,28 @@ class ExceptionDictWrapper:
                         self.exception_dict[unstressed_word] = [word.find(ADD_STRESS_SYMBOL)]
 
 
-    def is_in_dict(self, word: str) -> bool:
+    def is_in_dict(self, word: str, lemmatize_word: bool = False) -> bool:
         ''' Checking if the word is in the dictionary.
 
         1. word - string with the word of interest
-        2. returns True/False '''
+        2. lemmatize_word - True: lemmatize (normalize) word before searching in dictionary
+        3. returns True/False '''
 
         if word.lower() in self.exception_dict:
             return True
-        elif self.morph_analyzer.parse(word)[0].normal_form in self.exception_dict:
+        elif lemmatize_word and self.morph_analyzer.parse(word)[0].normal_form in self.exception_dict:
             return True
         else:
             return False
 
 
-    def put_stress(self, word: str, stress_symbol: str) -> str:
+    def put_stress(self, word: str, stress_symbol: str, lemmatize_word: bool = False) -> str:
         ''' Put stress in a word in accordance with the dictionary. Stress is indicated by stress_symbol after the stressed vowel.
         
         1. word - string with the word of interest
         2. stress_symbol - stress symbol
-        3. returns word with placed stress '''
+        3. lemmatize_word - True: lemmatize (normalize) word before searching in dictionary
+        4. returns word with placed stress '''
 
         prepared_word = word.lower()
         if prepared_word in self.exception_dict:
@@ -98,7 +100,7 @@ class ExceptionDictWrapper:
             return word[:stress_index] + stress_symbol + word[stress_index:]
 
         prepared_word = self.morph_analyzer.parse(word)[0].normal_form
-        if prepared_word in self.exception_dict:
+        if lemmatize_word and prepared_word in self.exception_dict:
             stress_index = self.exception_dict[prepared_word][0]
             return word[:stress_index] + stress_symbol + word[stress_index:]
         

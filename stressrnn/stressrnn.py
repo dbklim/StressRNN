@@ -105,7 +105,8 @@ class StressRNN(object):
         return stressed_word, accuracity
 
 
-    def put_stress(self, text: str, stress_symbol:str = '+', accuracy_threshold: float = 0.75, replace_similar_latin_symbols: bool = False) -> str:
+    def put_stress(self, text: str, stress_symbol:str = '+', accuracy_threshold: float = 0.75, replace_similar_symbols: bool = False,
+                   lemmatize_words: bool = False) -> str:
         ''' Split the text into words and place stress on them. The source text formatting is preserved. If some words already have an stress,
         it will be saved.
 
@@ -118,17 +119,18 @@ class StressRNN(object):
         1. text - string with text
         2. stress_symbol - stress symbol, only "'" and '+' are supported
         3. accuracy_threshold - threshold for the accuracy of stress placement (from 0.0 to 1.0)
-        4. replace_similar_latin_symbols - True: replacing similar latin symbols with cyrillic ones
-        5. returns text with placed stresses '''
+        4. replace_similar_symbols - True: replacing similar latin symbols with cyrillic ones
+        5. lemmatize_words - True: lemmatize (normalize) each word before searching in exception dictionary
+        6. returns text with placed stresses '''
 
         if stress_symbol != DEF_STRESS_SYMBOL and stress_symbol != ADD_STRESS_SYMBOL:
             raise ValueError("Unsupported stress symbol '{}'! Only \"{}\" and '{}' are supported.".format(
                                 stress_symbol, DEF_STRESS_SYMBOL, ADD_STRESS_SYMBOL))
 
-        words = prepare_text(text, replace_similar_latin_symbols=replace_similar_latin_symbols)
-        tokens = tokenize(text, replace_similar_latin_symbols=replace_similar_latin_symbols)
+        words = prepare_text(text, replace_similar_symbols=replace_similar_symbols)
+        tokens = tokenize(text, replace_similar_symbols=replace_similar_symbols)
         words_with_endings = add_endings(words)
-        
+
         # Stress placement
         stressed_words = []
         for word in words_with_endings:
@@ -142,8 +144,8 @@ class StressRNN(object):
                 stressed_word = word[:find_vowel_indices(word)[-1]+1] + stress_symbol + word[find_vowel_indices(word)[-1]+1:]
                 stressed_words.append(stressed_word)
 
-            elif SEARCH_TWO_VOWELS_RE.search(word) and self.exception_dict_wrapper.is_in_dict(del_endings(word)):
-                stressed_word = self.exception_dict_wrapper.put_stress(del_endings(word), stress_symbol)
+            elif SEARCH_TWO_VOWELS_RE.search(word) and self.exception_dict_wrapper.is_in_dict(del_endings(word), lemmatize_words):
+                stressed_word = self.exception_dict_wrapper.put_stress(del_endings(word), stress_symbol, lemmatize_words)
                 stressed_words.append(stressed_word)
 
             elif SEARCH_TWO_VOWELS_RE.search(word):
@@ -195,12 +197,12 @@ def main():
 
 
     start_time = time.time()
-    stressed_text = stress_rnn.put_stress(test_text, stress_symbol='+', accuracy_threshold=0.75, replace_similar_latin_symbols=True)
+    stressed_text = stress_rnn.put_stress(test_text, stress_symbol='+', accuracy_threshold=0.75, replace_similar_symbols=True)
     elapsed_time = time.time() - start_time
     print("\n[i] Source text:   '{}',\n    Stressed text: '{}',\n    Elapsed time {:.6f} s".format(test_text, stressed_text, elapsed_time))
 
     start_time = time.time()
-    stressed_text = stress_rnn.put_stress(test_text, stress_symbol='+', accuracy_threshold=0.0, replace_similar_latin_symbols=True)
+    stressed_text = stress_rnn.put_stress(test_text, stress_symbol='+', accuracy_threshold=0.0, replace_similar_symbols=True)
     elapsed_time = time.time() - start_time
     print("\n[i] Source text:   '{}',\n    Stressed text: '{}',\n    Elapsed time {:.6f} s".format(test_text, stressed_text, elapsed_time))
 

@@ -92,7 +92,7 @@ Accepts arguments:
 **Contains methods:**
 
 ```python
-put_stress(self, text: str, stress_symbol:str = '+', accuracy_threshold: float = 0.75, replace_similar_latin_symbols: bool = False) -> str:
+put_stress(self, text: str, stress_symbol:str = '+', accuracy_threshold: float = 0.75, replace_similar_symbols: bool = False, lemmatize_words: bool = False) -> str:
 ```
 
 Split the text into words and place stress on them. The source text formatting is preserved. If some words already have an stress, it will be saved.
@@ -104,8 +104,9 @@ The threshold for the accuracy of stress placement allows you to cut off stresse
 1. `text` - string with text
 2. `stress_symbol` - stress symbol, only `"'"` and `'+'` are supported
 3. `accuracy_threshold` - threshold for the accuracy of stress placement (from `0.0` to `1.0`)
-4. `replace_similar_latin_symbols` - `True`: replacing similar latin symbols with cyrillic ones
-5. returns text with placed stresses
+4. `replace_similar_symbols` - `True`: replacing similar latin symbols with cyrillic ones
+5. `lemmatize_words` - `True`: lemmatize (normalize) each word before searching in exception dictionary
+6. returns text with placed stresses
 
 ---
 
@@ -132,23 +133,25 @@ Accepts arguments:
 **Contains methods:**
 
 ```python
-is_in_dict(self, word: str) -> bool:
+is_in_dict(self, word: str, lemmatize_word: bool = False) -> bool:
 ```
 
 Checking if the word is in the dictionary.
 
 1. `word` - string with the word of interest
-2. returns `True`/`False`
+2. `lemmatize_word` - `True`: lemmatize (normalize) word before searching in dictionary
+3. returns `True`/`False`
 
 ```python
-put_stress(self, word: str, stress_symbol: str) -> str:
+put_stress(self, word: str, stress_symbol: str, lemmatize_word: bool = False) -> str:
 ```
 
 Put stress in a word in accordance with the dictionary. Stress is indicated by stress_symbol after the stressed vowel.
 
 1. `word` - string with the word of interest
 2. `stress_symbol` - stress symbol
-3. returns word with placed stress
+3. `lemmatize_word` - `True`: lemmatize (normalize) word before searching in dictionary
+4. returns word with placed stress
 
 ## Updating the default exception dictionary
 
