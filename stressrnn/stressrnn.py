@@ -97,13 +97,12 @@ class StressRNN(object):
             print("\n[W] No {}-th letter in '{}'!\n".format(stress_index+1, word))
             return word, 0.0
 
-        # With the word 'зряченюхослышащий' bug occurs: stress is placed on a consonant letter, not a vowel (the stress index is shifted by +1)
+        # With the word 'зряченюхослышащий' bug occurs: stress is placed on a consonant letter, not a vowel (the stress index is shifted by +1 to next vowel)
         if word[stress_index] not in VOWELS and stress_index + 1 < len(word) - 1 and word[stress_index+1] in VOWELS:
             stress_index += 1
-        # With the word 'дойдете' bug occurs: stress is placed on letter 'й', not a vowel (the stress index is shifted by -1)
-        # With other similar words 'отойдете', 'войдет', 'зайдет', 'найдет', 'выйдет' that's all right
-        elif word[stress_index] == 'й' and stress_index - 1 > 0 and word[stress_index-1] in VOWELS:
-            stress_index -= 1
+        # With the word 'дойдете' bug occurs: stress is placed on letter 'й', not a vowel (the stress index is shifted by +2 to next vowel)
+        elif word[stress_index] == 'й' and stress_index + 2 < len(word) - 1 and word[stress_index+2] in VOWELS:
+            stress_index += 2
         
         stressed_word = word[:stress_index+1] + stress_symbol + word[stress_index+1:]
         return stressed_word, accuracity
