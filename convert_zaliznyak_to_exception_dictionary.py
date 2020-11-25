@@ -57,16 +57,19 @@ def main():
 
     f_name_zip_odict = 'odict.zip'
     f_name_odict = 'zaliznyak.txt'
-    f_name_exception_dict = 'stressrnn/exception_dictionary.txt'
+    f_name_current_exception_dict = 'stressrnn/source_exception_dictionary.txt'
+    f_name_new_exception_dict = 'stressrnn/exception_dictionary.txt'
 
     parser = argparse.ArgumentParser(description="Converting Zaliznyak's dictionary from http://odict.ru/ to the format of " + \
-                                     "exception dictionary and combining it with the current exception dictionary.")
+                                                 "exception dictionary and combining it with the current exception dictionary.")
     parser.add_argument('-iz', '--f_name_zip_odict', type=str, default=None,
                         help="Name of .zip archive with the Zaliznyak's dictionary")
     parser.add_argument('-i', '--f_name_odict', type=str, default=None,
                         help="Name of .txt file with the Zaliznyak's dictionary")
-    parser.add_argument('-o', '--f_name_exception_dict', type=str, default=None,
+    parser.add_argument('-ic', '--f_name_current_exception_dict', type=str, default=None,
                         help="Name of .txt file with the current exception dictionary (it will be combined with the Zaliznyak's dictionary)")
+    parser.add_argument('-o', '--f_name_new_exception_dict', type=str, default=None,
+                        help="Name of .txt file to save the combined dictionary")
     args = parser.parse_args()
 
 
@@ -82,8 +85,10 @@ def main():
         f_name_zip_odict = None
         f_name_odict = args.f_name_odict
 
-    if args.f_name_exception_dict:
-        f_name_exception_dict = args.f_name_exception_dict
+    if args.f_name_current_exception_dict:
+        f_name_current_exception_dict = args.f_name_current_exception_dict
+    if args.f_name_new_exception_dict:
+        f_name_new_exception_dict = args.f_name_new_exception_dict
 
 
     # Unpacking archive with the dictionary to the same folder, where the archive is located
@@ -128,9 +133,9 @@ def main():
     print('[i] After converting, there are {} values ​​left'.format(len(zaliznyak_dict)))
 
 
-    print("[i] Loading current exception dictionary from '{}'...".format(f_name_exception_dict))
+    print("[i] Loading current exception dictionary from '{}'...".format(f_name_current_exception_dict))
     current_exception_dict = []
-    with open(f_name_exception_dict, 'r') as f_exception_dict:
+    with open(f_name_current_exception_dict, 'r') as f_exception_dict:
         current_exception_dict = f_exception_dict.readlines()
     current_exception_dict[-1] += '\n'
     print('[i] Loaded {} values'.format(len(current_exception_dict)))
@@ -151,8 +156,8 @@ def main():
     zaliznyak_dict = sorted(list(set(zaliznyak_dict)))
 
 
-    print("[i] Saving {} values in '{}'...".format(len(zaliznyak_dict), f_name_exception_dict))
-    with open(f_name_exception_dict, 'w') as f_new_exception_dict:
+    print("[i] Saving {} values in '{}'...".format(len(zaliznyak_dict), f_name_new_exception_dict))
+    with open(f_name_new_exception_dict, 'w') as f_new_exception_dict:
         f_new_exception_dict.writelines(zaliznyak_dict)
 
     
