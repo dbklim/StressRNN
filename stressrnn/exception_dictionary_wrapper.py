@@ -80,6 +80,8 @@ class ExceptionDictWrapper:
 
         if word.lower() in self.exception_dict:
             return True
+        elif word.lower().replace('ё', 'е') in self.exception_dict:
+            return True
         elif lemmatize_word and self.morph_analyzer.parse(word)[0].normal_form in self.exception_dict:
             return True
         else:
@@ -95,6 +97,11 @@ class ExceptionDictWrapper:
         4. returns word with placed stress '''
 
         prepared_word = word.lower()
+        if prepared_word in self.exception_dict:
+            stress_index = self.exception_dict[prepared_word][0]
+            return word[:stress_index] + stress_symbol + word[stress_index:]
+        
+        prepared_word = word.lower().replace('ё', 'е')
         if prepared_word in self.exception_dict:
             stress_index = self.exception_dict[prepared_word][0]
             return word[:stress_index] + stress_symbol + word[stress_index:]
