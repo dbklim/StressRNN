@@ -34,7 +34,7 @@ except ImportError:
 # Disabling TensorFlow warning notifications (https://github.com/tensorflow/tensorflow/issues/27023#issuecomment-589673539)
 tf.compat.v1.logging.set_verbosity(tf.compat.v1.logging.ERROR)
 
-__version__ = '0.1.4_m2'
+__version__ = '0.1.4_m2.1'
 
 
 class StressRNN(object):
@@ -97,9 +97,13 @@ class StressRNN(object):
             print("\n[W] No {}-th letter in '{}'!\n".format(stress_index+1, word))
             return word, 0.0
 
-        # With the word 'зряченюхослышащий' bug occurs: stress is placed on a consonant letter, not a vowel (the stress index is shifted by -1)
+        # With the word 'зряченюхослышащий' bug occurs: stress is placed on a consonant letter, not a vowel (the stress index is shifted by +1)
         if word[stress_index] not in VOWELS and stress_index + 1 < len(word) - 1 and word[stress_index+1] in VOWELS:
             stress_index += 1
+        # With the word 'дойдете' bug occurs: stress is placed on letter 'й', not a vowel (the stress index is shifted by -1)
+        # With other similar words 'отойдете', 'войдет', 'зайдет', 'найдет', 'выйдет' that's all right
+        elif word[stress_index] == 'й' and stress_index - 1 > 0 and word[stress_index-1] in VOWELS:
+            stress_index -= 1
         
         stressed_word = word[:stress_index+1] + stress_symbol + word[stress_index+1:]
         return stressed_word, accuracity
@@ -190,7 +194,7 @@ class StressRNN(object):
 
 
 def main():
-    test_text = 'ПривЕТ, зряченюхослышащий Иванов-Лапнюкoв Григо\'рий Фе+ликсович! Как ВAши Дела-Делишки тут, мм? ' + \
+    test_text = 'ПривЕТ, зряченюхослышащий Иванов-Лапнюкoв Григо\'рий Фе+ликсович! Как ВAши Дела-Делишки тут, мм? Дойдете/зайдешь сами/сам? ' + \
                 'Купили каких-нибудь экзотермов вчера или решили набрать нифуртов у Ельпетифоровых? Один рубль или два рубля?'
 
     stress_rnn = StressRNN(f_name_add_exception_dict='add_exception_dictionary.txt')
