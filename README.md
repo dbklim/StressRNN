@@ -16,7 +16,7 @@ The modification has the following differences from the original RusStress:
 - improved work with hyphenated words (earlier, stress was placed only on the first part of the word, now it's placed on both parts)
 - implemented skipping words with pre-set stresses (it used to lead to undefined behavior)
 - added replacement of similar Latin symbols with the same Cyrillic ones (for example, `A` -> `А`, `e` -> `е`) (the full list is available in [SAME_LETTERS_EN_RU](https://github.com/Desklop/StressRNN/blob/master/stressrnn/constants.py#L27))
-- fixed bug with some words, in which the stress was placed on a consonant letter, not a vowel (stress index is shift to next vowel or to the previous one, if there are no vowels after stress) (for example, "дойдете", "зряченюхослышащий") (these words are added to the [exception dictionary](https://github.com/Desklop/StressRNN/blob/master/stressrnn/source_exception_dictionary.txt))
+- fixed bug with some words, in which the stress was placed on a consonant letter, not a vowel (stress index is shift to next vowel or to the previous one, if there are no vowels after stress) (for example, "дойдете", "зряченюхослышащий") (these words were added to the [exception dictionary](https://github.com/Desklop/StressRNN/blob/master/stressrnn/source_exception_dictionary.txt))
 - added an exception dictionary and the ability to load your own additional exception dictionary when creating a class object
 - added a [default exception dictionary](https://github.com/Desklop/StressRNN/blob/master/stressrnn/exception_dictionary.txt) based on the "Grammatical dictionary" by A. A. Zaliznyak from http://odict.ru/ (supplied with the package)
 - compiled all regular expressions to improve performance

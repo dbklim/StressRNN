@@ -97,15 +97,9 @@ class StressRNN(object):
             print("\n[W] No {}-th letter in '{}'!\n".format(stress_index+1, word))
             return word, 0.0
 
-        # With the word 'дойдете' bug occurs: stress is placed on letter 'й', not a vowel (stress index is shifted by +2 to next vowel)
-        if word[stress_index] == 'й' and stress_index + 2 < len(word) - 1 and word[stress_index+2] in VOWELS:
-            stress_index += 2
-        # With the word 'зряченюхослышащий' bug occurs: stress is placed on a consonant letter, not a vowel (stress index is shifted by +1 to next vowel)
-        elif word[stress_index] not in VOWELS and stress_index + 1 < len(word) - 1 and word[stress_index+1] in VOWELS:
-            stress_index += 1
-        # Processing other cases when the stress is placed on a consonant letter (stress index is shift to next vowel or to the previous one,
-        # if there are no vowels after stress)
-        elif word[stress_index] not in VOWELS:
+        # Processing cases when the stress is placed on a consonant letter (stress index is shift to next vowel or to the previous one,
+        # if there are no vowels after stress) (for example, 'дойдете', 'зряченюхослышащий') (these words were added to the exception dictionary)
+        if word[stress_index] not in VOWELS:
             vowel_indices = find_vowel_indices(word)
             for vowel_index in vowel_indices:
                 if stress_index < vowel_index:
