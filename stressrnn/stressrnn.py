@@ -144,6 +144,13 @@ class StressRNN(object):
         # Stress placement
         stressed_words = []
         for word in words_with_endings:
+            # When using the module after russian_g2p.Accentor, it is possible situation that one of the words passed to the input, contains
+            # stress symbol after each letter (for example, 'почем' -> '+п+о+ч+е+м+')
+            if word.count(DEF_STRESS_SYMBOL) > 2:
+                word = word.replace(DEF_STRESS_SYMBOL, '')
+            elif word.count(ADD_STRESS_SYMBOL) > 1:
+                word = word.replace(ADD_STRESS_SYMBOL, '')
+
             if word.find(DEF_STRESS_SYMBOL) != -1 and word[word.find(DEF_STRESS_SYMBOL)-1] in VOWELS:
                 continue
             
