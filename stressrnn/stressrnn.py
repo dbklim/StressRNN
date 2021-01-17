@@ -125,7 +125,7 @@ class StressRNN(object):
         The threshold for the accuracy of stress placement allows you to cut off stresses, the prediction accuracy of which is lower (<=)
         than specified. The 0.75 threshold reduces the number of incorrectly placed stresses, but increases the number of words that will
         not be stressed. The 0.0 threshold allows you to place stresses in absolutely all words, but not always correctly.
-        
+
         1. text - string with text
         2. stress_symbol - stress symbol, only "'" and '+' are supported
         3. accuracy_threshold - threshold for the accuracy of stress placement (from 0.0 to 1.0)
@@ -153,7 +153,7 @@ class StressRNN(object):
 
             if word.find(DEF_STRESS_SYMBOL) != -1 and word[word.find(DEF_STRESS_SYMBOL)-1] in VOWELS:
                 continue
-            
+
             elif word.find(ADD_STRESS_SYMBOL) != -1 and word[word.find(ADD_STRESS_SYMBOL)-1] in VOWELS:
                 continue
 
@@ -161,7 +161,7 @@ class StressRNN(object):
                 stressed_word = word[:find_vowel_indices(word)[-1]+1] + stress_symbol + word[find_vowel_indices(word)[-1]+1:]
                 stressed_words.append(stressed_word)
 
-            elif SEARCH_TWO_VOWELS_RE.search(word) and self.exception_dict_wrapper.is_in_dict(del_endings(word), lemmatize_words):
+            elif self.exception_dict_wrapper.is_in_dict(del_endings(word), lemmatize_words):
                 stressed_word = self.exception_dict_wrapper.put_stress(del_endings(word), stress_symbol, lemmatize_words)
                 stressed_words.append(stressed_word)
 
