@@ -76,7 +76,7 @@ from stressrnn import StressRNN
 stress_rnn = StressRNN()
 
 text = 'Проставь, пожалуйста, ударения'
-stressed_text = stress_rnn.put_stress(text, stress_symbol='+', accuracy_threshold=0.75, replace_similar_latin_symbols=True)
+stressed_text = stress_rnn.put_stress(text, stress_symbol='+', accuracy_threshold=0.75, replace_similar_symbols=True)
 print(stressed_text)  # 'Проста+вь, пожа+луйста, ударе+ния'
 ```
 
