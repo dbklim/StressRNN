@@ -58,7 +58,7 @@ virtualenv env_base && source env_base/bin/activate
 pip install -r requirements_dev.txt
 ```
 
-**Full dependencies:** `numpy>=1.16.0 pymorphy2[fast]<=0.9.2 tensorflow<=2.3.1 onnxruntime<=1.7 keras2onnx<=1.7` (listed in [requirements_dev.txt](https://github.com/Desklop/StressRNN/blob/master/requirements_dev.txt)).
+**Full dependencies:** `numpy>=1.16.0 pymorphy2[fast]<=0.9.2 tensorflow<=2.2.2 onnxruntime<=1.7 keras2onnx<=1.7` (listed in [requirements_dev.txt](https://github.com/Desklop/StressRNN/blob/master/requirements_dev.txt)).
 
 **Dependencies for package use only:** `numpy>=1.16.0 pymorphy2[fast]<=0.9.2 onnxruntime<=1.7` (listed in [requirements.txt](https://github.com/Desklop/StressRNN/blob/master/requirements.txt)).
 

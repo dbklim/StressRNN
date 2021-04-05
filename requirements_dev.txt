@@ -1,6 +1,6 @@
 numpy>=1.16.0
 h5py<=2.10.0
 pymorphy2[fast]>=0.8
-tensorflow<=1.15.4
+tensorflow<=2.2.2
 onnxruntime<=1.7
 keras2onnx<=1.7

@@ -24,7 +24,7 @@ def convert_keras_model_to_onnx(f_name_keras_model: str, f_name_model_weights: s
     ''' Convert trained Keras model to ONNX Runtime format. Increases work speed of model by 10-30 times on the CPU (on Intel i7-10510U, with
     TensorFlow v1.X test phrase processing time is about 150 ms, with ONNX Runtime — about 5 ms).
 
-    Only TensorFlow v2.0-2.2 is supported! With TensorFlow v1.X there will be an error!
+    Only TensorFlow v2.0-2.2 is supported (source: https://github.com/onnx/keras-onnx)! With TensorFlow v1.X there will be an error!
     
     1. f_name_keras_model - name of .json file with the keras model
     2. f_name_model_weights - name of .hdf5 file with keras model weights
