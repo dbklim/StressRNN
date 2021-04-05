@@ -1,4 +1,5 @@
 include LICENSE README.md
-include stressrnn/exception_dictionary.txt
-include stressrnn/model.json
-include stressrnn/weights_96.hdf5
+include stressrnn/dicts/exception_dictionary.txt
+include stressrnn/models/model.json
+include stressrnn/models/weights_96.hdf5
+include stressrnn/models/model.onnx

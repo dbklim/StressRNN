@@ -21,6 +21,9 @@ The modification has the following differences from the original RusStress:
 - added a [default exception dictionary](https://github.com/Desklop/StressRNN/blob/master/stressrnn/exception_dictionary.txt) based on the "Grammatical dictionary" by A. A. Zaliznyak from http://odict.ru/ (supplied with the package)
 - compiled all regular expressions to improve performance
 - code refactoring was performed
+- added support for TensorFlow v2.X
+- optimization of work speed: added work with neural network in batch mode (speeds up work by 1.5-2 times)
+- optimization of work speed: added predict using ONNX Runtime (increases work speed of model by 10-30 times on the CPU)
 
 These changes allow you to use this package in projects such as speech synthesis, without any changes, "out of the box".
 
@@ -44,12 +47,24 @@ python3 setup.py bdist_wheel
 Then copy .whl package from `/dist` to your project and run:
 
 ```bash
-pip install stressrnn-0.1.4_*.whl
+pip install stressrnn-0.2.*.whl
 ```
 
-**Dependencies:** `numpy<1.19.0,>=1.16.0 scipy<=1.5.2 tensorflow<=1.15.4 pymorphy2[fast]<=0.9.2` (listed in [requirements.txt](https://github.com/Desklop/StressRNN/blob/master/requirements.txt)).
+For development, you need to additionally install TensorFlow:
 
-**Note:** TensorFlow v2.X is supported, but the work speed using TensorFlow v2.X is about 3-5 times lower than with TensorFlow v1.X.
+```bash
+git clone https://github.com/Desklop/StressRNN && cd StressRNN
+virtualenv env_base && source env_base/bin/activate
+pip install -r requirements_dev.txt
+```
+
+**Full dependencies:** `numpy>=1.16.0 pymorphy2[fast]<=0.9.2 tensorflow<=2.3.1 onnxruntime<=1.7 keras2onnx<=1.7` (listed in [requirements_dev.txt](https://github.com/Desklop/StressRNN/blob/master/requirements_dev.txt)).
+
+**Dependencies for package use only:** `numpy>=1.16.0 pymorphy2[fast]<=0.9.2 onnxruntime<=1.7` (listed in [requirements.txt](https://github.com/Desklop/StressRNN/blob/master/requirements.txt)).
+
+**Note 1:** TensorFlow v2.X is supported, but the work speed using TensorFlow v2.X is about 3-5 times lower than with TensorFlow v1.X.
+
+**Note 2:** ONNX Runtime is used by default. This increases the work speed of package by 10-30 times on the CPU (on Intel i7-10510U, with TensorFlow v1.X test phrase processing time is about 150 ms, with ONNX Runtime — about 5 ms).
 
 ## Usage
 

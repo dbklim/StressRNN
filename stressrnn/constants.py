@@ -1,9 +1,6 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
-# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-#       OS : GNU/Linux Ubuntu 16.04 or later
-# LANGUAGE : Python 3.6 or later
-# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# OS: GNU/Linux, Author: Klim V. O., MashaPo
 
 from pathlib import Path
 import re
@@ -53,6 +50,7 @@ CHARS = [
 CHAR_INDICES = {symbol:i for i, symbol in enumerate(CHARS)}
 
 BASE_DIR = Path(__file__).resolve().parent
-F_NAME_MODEL = BASE_DIR / 'model.json'
-F_NAME_WEIGHTS = BASE_DIR / 'weights_96.hdf5'
-F_NAME_EXCEPTION_DICT = BASE_DIR / 'exception_dictionary.txt'
+F_NAME_TF_MODEL = str(BASE_DIR/'models/model.json')
+F_NAME_TF_WEIGHTS = str(BASE_DIR/'models/weights_96.hdf5')
+F_NAME_ONNX_MODEL = str(BASE_DIR/'models/model.onnx')
+F_NAME_EXCEPTION_DICT = str(BASE_DIR/'dicts/exception_dictionary.txt')

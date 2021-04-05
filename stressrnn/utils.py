@@ -1,9 +1,6 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
-# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-#       OS : GNU/Linux Ubuntu 16.04 or later
-# LANGUAGE : Python 3.6 or later
-# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# OS: GNU/Linux, Author: Klim V. O., MashaPo
 
 '''
 Supporting functions for the StressRNN.
@@ -12,9 +9,11 @@ Supporting functions for the StressRNN.
 from typing import List
 
 try:
-    from .constants import *
+    from .constants import DEF_STRESS_SYMBOL, ADD_STRESS_SYMBOL, VOWELS, SEARCH_TWO_VOWELS_RE, MARKING_TEXT_RE, CLEANING_TEXT_RE
+    from .constants import DEFAULT_TOKENIZER_CATEGORIES, SAME_LETTERS_EN_RU
 except ImportError:
-    from constants import *
+    from constants import DEF_STRESS_SYMBOL, ADD_STRESS_SYMBOL, VOWELS, SEARCH_TWO_VOWELS_RE, MARKING_TEXT_RE, CLEANING_TEXT_RE
+    from constants import DEFAULT_TOKENIZER_CATEGORIES, SAME_LETTERS_EN_RU
 
 
 def tokenize(text: str, categories: list = DEFAULT_TOKENIZER_CATEGORIES, replace_similar_symbols: bool = False) -> List[str]:

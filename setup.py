@@ -1,9 +1,6 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
-# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-#       OS : GNU/Linux Ubuntu 16.04 or later
-# LANGUAGE : Python 3.6 or later
-# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# OS: GNU/Linux, Author: Klim V. O., MashaPo
 
 from setuptools import setup
 from typing import List
@@ -20,7 +17,7 @@ def requirements() -> List[str]:
 
 
 setup(name='stressrnn',
-      version='0.1.4_m2.2',
+      version='0.2.0',
       description='Package that helps you to put lexical stress in russian text.',
       long_description=readme(),
       url='https://github.com/Desklop/StressRNN',

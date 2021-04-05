@@ -1,10 +1,6 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
-# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-#       OS : GNU/Linux Ubuntu 16.04 or later
-# LANGUAGE : Python 3.5.2 or later
-#   AUTHOR : Klim V. O.
-# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# OS: GNU/Linux, Author: Klim V. O.
 
 '''
 Unpacking the "Grammatical dictionary" by A. A. Zaliznyak from .zip archive, converting it to the format of exception dictionary
@@ -57,8 +53,8 @@ def main():
 
     f_name_zip_odict = 'odict.zip'
     f_name_odict = 'zaliznyak.txt'
-    f_name_current_exception_dict = 'stressrnn/source_exception_dictionary.txt'
-    f_name_new_exception_dict = 'stressrnn/exception_dictionary.txt'
+    f_name_current_exception_dict = 'stressrnn/dicts/source_exception_dictionary.txt'
+    f_name_new_exception_dict = 'stressrnn/dicts/exception_dictionary.txt'
 
     parser = argparse.ArgumentParser(description="Converting Zaliznyak's dictionary from http://odict.ru/ to the format of " + \
                                                  "exception dictionary and combining it with the current exception dictionary.")

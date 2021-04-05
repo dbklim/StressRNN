@@ -1,9 +1,6 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
-# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-#       OS : GNU/Linux Ubuntu 16.04 or later
-# LANGUAGE : Python 3.6 or later
-# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# OS: GNU/Linux, Author: Klim V. O.
 
 '''
 Exception dictionary for correcting stress placement by a neural network.
@@ -16,9 +13,9 @@ Dependences: pymorphy2[fast]<=0.9.2
 import pymorphy2
 
 try:
-    from .constants import *
+    from .constants import DEF_STRESS_SYMBOL, ADD_STRESS_SYMBOL, F_NAME_EXCEPTION_DICT
 except ImportError:
-    from constants import *
+    from constants import DEF_STRESS_SYMBOL, ADD_STRESS_SYMBOL, F_NAME_EXCEPTION_DICT
 
 
 class ExceptionDictWrapper:
