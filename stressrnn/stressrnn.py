@@ -9,7 +9,7 @@ version of RusStress (https://github.com/MashaPo/russtress). Only Russian is sup
 Contains the 'StressRNN' class. Learn more in https://github.com/Desklop/StressRNN.
 
 Dependences:
-    - for ONNX Runtime: numpy>=1.16.0 pymorphy2[fast]<=0.9.2 onnxruntime<=1.7
+    - for ONNX Runtime: numpy>=1.16.0 pymorphy2[fast]<=0.9.2 onnxruntime<=1.6
     - for TensorFlow: numpy>=1.16.0 pymorphy2[fast]<=0.9.2 tensorflow<=2.3.1
 '''
 
