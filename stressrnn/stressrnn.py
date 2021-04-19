@@ -249,12 +249,11 @@ class StressRNN(object):
                 updated_stressed_words = []
                 idx_in_batch = 0
                 for stressed_word in stressed_words:
-                    if idx_in_batch >= len(batch_for_predict):
-                        break
-                    if stressed_word == batch_for_predict[idx_in_batch] and batch_with_stressed_words[idx_in_batch][1] >= accuracy_threshold:
+                    if idx_in_batch < len(batch_for_predict) and stressed_word == batch_for_predict[idx_in_batch] \
+                                                             and batch_with_stressed_words[idx_in_batch][1] >= accuracy_threshold:
                         updated_stressed_words.append(batch_with_stressed_words[idx_in_batch][0])
                         idx_in_batch += 1
-                    elif stressed_word == batch_for_predict[idx_in_batch]:
+                    elif idx_in_batch < len(batch_for_predict) and stressed_word == batch_for_predict[idx_in_batch]:
                         idx_in_batch += 1
                     else:
                         updated_stressed_words.append(stressed_word)
