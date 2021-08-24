@@ -58,15 +58,13 @@ virtualenv env_base && source env_base/bin/activate
 pip install -r requirements_dev.txt
 ```
 
-**Full dependencies:** `numpy>=1.16.0 pymorphy2[fast]<=0.9.2 tensorflow<=2.2.2 onnxruntime<=1.6 keras2onnx<=1.7` (listed in [requirements_dev.txt](https://github.com/Desklop/StressRNN/blob/master/requirements_dev.txt)).
+**Full dependencies:** `numpy>=1.16.0 pymorphy2[fast]<=0.9.2 tensorflow<=2.2.2 onnxruntime<=1.8.1 keras2onnx<=1.7` (listed in [requirements_dev.txt](https://github.com/Desklop/StressRNN/blob/master/requirements_dev.txt)).
 
-**Dependencies for package use only:** `numpy>=1.16.0 pymorphy2[fast]<=0.9.2 onnxruntime<=1.6` (listed in [requirements.txt](https://github.com/Desklop/StressRNN/blob/master/requirements.txt)).
+**Dependencies for package use only:** `numpy>=1.16.0 pymorphy2[fast]<=0.9.2 onnxruntime<=1.8.1` (listed in [requirements.txt](https://github.com/Desklop/StressRNN/blob/master/requirements.txt)).
 
 **Note 1:** TensorFlow v2.X is supported, but the work speed using TensorFlow v2.X is about 3-5 times lower than with TensorFlow v1.X.
 
 **Note 2:** ONNX Runtime is used by default. This increases the work speed of package by 10-30 times on the CPU (on Intel i7-10510U, with TensorFlow v1.X test phrase processing time is about 150 ms, with ONNX Runtime — about 5 ms).
-
-**Note 3:** the package supports ONNX Runtime v1.7, but when using it in a docker container with Ubuntu 18.04, the `"Segmentation fault (core dumped)"` error occurs when loading the model. Downgrading ONNX Runtime to v1.6 fixes the bug.
 
 ## Usage
 

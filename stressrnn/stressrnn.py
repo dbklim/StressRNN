@@ -33,14 +33,12 @@ if os.path.exists(F_NAME_ONNX_MODEL):
     import onnxruntime
 else:
     import tensorflow as tf
-    from tensorflow.keras import Sequential
-    from tensorflow.keras.layers import LSTM, Bidirectional, Dense, Dropout, Activation
 
     # Disabling TensorFlow warning notifications (https://github.com/tensorflow/tensorflow/issues/27023#issuecomment-589673539)
     tf.compat.v1.logging.set_verbosity(tf.compat.v1.logging.ERROR)
 
 
-__version__ = '0.2.0'
+__version__ = '0.2.1'
 
 
 class StressRNN(object):
