@@ -78,7 +78,7 @@ class StressRNN(object):
             session_options.inter_op_num_threads = 1
             session_options.intra_op_num_threads = 1
 
-            self.model = onnxruntime.InferenceSession(F_NAME_ONNX_MODEL)
+            self.model = onnxruntime.InferenceSession(F_NAME_ONNX_MODEL, sess_options=session_options)
 
         # Load model with TensorFlow v1.X
         elif tf.__version__[0] == '1':
