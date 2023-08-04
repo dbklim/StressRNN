@@ -26,6 +26,8 @@ setup(name='stressrnn',
           'Programming Language :: Python :: 3.6',
           'Programming Language :: Python :: 3.7',
           'Programming Language :: Python :: 3.8',
+          'Programming Language :: Python :: 3.9',
+          'Programming Language :: Python :: 3.10',
           'Topic :: Text Processing :: Linguistic'
       ],
       author='Maria Ponomareva (RusStress), Kirill Milintsevich (RusStress), Vladislav Klim (StressRNN)',

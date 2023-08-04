@@ -5,7 +5,7 @@
 '''
 Converting trained Keras model to ONNX Runtime format. Increases work speed of model by 10-30 times on the CPU.
 
-Dependences: numpy>=1.16.0 tensorflow<=2.2.2 onnxruntime<=1.8.1 keras2onnx<=1.7
+Dependences: numpy>=1.16.0 tensorflow<=2.2.2 onnxruntime<=1.15.1 keras2onnx<=1.7
 '''
 
 import tensorflow as tf

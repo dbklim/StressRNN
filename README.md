@@ -29,7 +29,7 @@ These changes allow you to use this package in projects such as speech synthesis
 
 ## Installation
 
-Simple installation with pip (python 3.6-3.8 supported):
+Simple installation with pip (python 3.6-3.10 supported):
 
 ```bash
 pip3 install git+https://github.com/Desklop/StressRNN
@@ -58,13 +58,13 @@ virtualenv env_base && source env_base/bin/activate
 pip install -r requirements_dev.txt
 ```
 
-**Full dependencies:** `numpy>=1.16.0 pymorphy2[fast]<=0.9.2 tensorflow<=2.2.2 onnxruntime<=1.8.1 keras2onnx<=1.7` (listed in [requirements_dev.txt](https://github.com/Desklop/StressRNN/blob/master/requirements_dev.txt)).
+**Full dependencies:** `numpy>=1.16.0 pymorphy2[fast]<=0.9.2 tensorflow<=2.2.2 onnxruntime<=1.15.1 keras2onnx<=1.7` (listed in [requirements_dev.txt](https://github.com/Desklop/StressRNN/blob/master/requirements_dev.txt), only Python 3.6-3.8).
 
-**Dependencies for package use only:** `numpy>=1.16.0 pymorphy2[fast]<=0.9.2 onnxruntime<=1.8.1` (listed in [requirements.txt](https://github.com/Desklop/StressRNN/blob/master/requirements.txt)).
+**Dependencies for package use only:** `numpy>=1.16.0 pymorphy2[fast]<=0.9.2 onnxruntime<=1.15.1` (listed in [requirements.txt](https://github.com/Desklop/StressRNN/blob/master/requirements.txt)).
 
 **Note 1:** TensorFlow v2.X is supported, but the work speed using TensorFlow v2.X is about 3-5 times lower than with TensorFlow v1.X.
 
-**Note 2:** ONNX Runtime is used by default. This increases the work speed of package by 10-30 times on the CPU (on Intel i7-10510U, with TensorFlow v1.X test phrase processing time is about 150 ms, with ONNX Runtime — about 5 ms).
+**Note 2:** ONNX Runtime is used by default. This increases the work speed of package by 10-30 times on the CPU (on Intel i7-10510U, with TensorFlow v1.X test phrase processing time is about 150 ms, with ONNX Runtime — about 1-3 ms).
 
 ## Usage
 
