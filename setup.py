@@ -34,6 +34,8 @@ setup(name='stressrnn',
       keywords='nlp russian stress accent emphasis linguistic rnn lstm bilstm',
       author_email='ponomarevamawa@gmail.com (RusStress), vladsklim@gmail.com (StressRNN)',
       packages=['stressrnn'],
+      # Add py.typed to the package
+      package_data={'stressrnn': ['py.typed']},
       install_requires=requirements(),
       include_package_data=True,
       zip_safe=False)

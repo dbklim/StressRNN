@@ -1,7 +1,7 @@
 numpy>=1.16.0
 h5py>=3.9.0
 protobuf<=3.20.3
-pymorphy2[fast]>=0.9.1
+pymorphy2[fast] @ git+https://github.com/pymorphy2-fork/pymorphy2@master
 tensorflow<=2.2.2
 onnxruntime>=1.15.1
 keras2onnx<=1.7

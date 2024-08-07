@@ -51,7 +51,7 @@ class ExceptionDictWrapper:
         several identical words with different stresses, they will all be added to the dictionary, and the stress positions will be
         specified in the order of reading the words. '''
 
-        with open(f_name_exception_dict, 'r') as f_exception_dict:
+        with open(f_name_exception_dict, 'r', encoding="utf-8") as f_exception_dict:
             for word in f_exception_dict:
                 word = word.strip('\n')
                 if DEF_STRESS_SYMBOL in word:
