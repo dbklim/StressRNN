@@ -17,7 +17,7 @@ def requirements() -> List[str]:
 
 
 setup(name='stressrnn',
-      version='0.2.1',
+      version='0.2.2',
       description='Package that helps you to put lexical stress in russian text.',
       long_description=readme(),
       url='https://github.com/Desklop/StressRNN',

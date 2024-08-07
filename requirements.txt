@@ -1,4 +1,4 @@
 numpy>=1.16.0
-h5py<=3.9.0
+h5py>=3.9.0
 pymorphy2[fast]>=0.9.1
-onnxruntime<=1.15.1
+onnxruntime>=1.15.1
