@@ -178,7 +178,7 @@ python3 convert_zaliznyak_to_exception_dictionary.py -iz odict.zip -o stressrnn/
 
 ## Datasets
 
-The repo [contains](https://github.com/Desklop/StressRNN/datasets) samples from UD treebanks annotated with word stress for the Russian, Ukranian and Belorusian languages. For more details about the tool see VarDial paper (coming soon).
+The repo [contains](https://github.com/Desklop/StressRNN/tree/master/datasets) samples from UD treebanks annotated with word stress for the Russian, Ukranian and Belorusian languages. For more details about the tool see VarDial paper (coming soon).
 
 ## Authors
 
